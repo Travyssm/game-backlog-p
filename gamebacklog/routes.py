@@ -9,7 +9,8 @@ def home():
 
 @app.route("/genres")
 def genres():
-    return render_template("genres.html")
+    genres = list(Genre.query.order_by(Genre.genre_name).all())
+    return render_template("genres.html", genres=genres)
 
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
