@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+.icon{
+    padding-right: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+}
