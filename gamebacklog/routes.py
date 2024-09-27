@@ -30,3 +30,11 @@ def edit_genre(genre_id):
         db.session.commit()
         return redirect(url_for("genres"))
     return render_template("edit_genre.html", genre=genre)
+
+
+@app.route("/delete_genre/<int:genre_id>")
+def delete_genre(genre_id):
+    genre = Genre.query.get_or_404(genre_id)
+    db.session.delete(genre)
+    db.session.commit()
+    return redirect(url_for("genres"))

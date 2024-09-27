@@ -20,7 +20,19 @@
         </div>
         <div class="card-action">
           <a href="{{ url_for('edit_genre', genre_id=genre.id) }}" class="btn green accent-4">Edit</a>
-          <a href="#" class="btn red">Delete</a>
+          <a href="#modal-{{ genre.id }}" class="btn red modal-trigger">Delete</a>
+
+          <!-- Modal Structure -->
+          <div id="modal-{{ genre.id }}" class="modal">
+            <div class="modal-content">
+              <h4>Are you sure you want to delete the {{ genre.genre_name }} genre?</h4>
+              <p class="red-text">WARNING! This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+              <a href="{{ url_for('delete_genre', genre_id=genre.id) }}" class="btn red">Delete</a>
+              <a href="#!" class="modal-close btn green accent-4">Cancel</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
