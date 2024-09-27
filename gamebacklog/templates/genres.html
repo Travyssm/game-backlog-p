@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="light-blue-text text-darken-4 center-align">Genres</h3>
+
+<div class="row"></div>
+    <div class="col s12 center-align">
+        <a href="{{ url_for('add_genre') }}" class="btn-large pink darken-2">
+            Add Genre <i class="fa-solid fa-square-plus"></i>
+        </a>
+    </div>
+</div>
+
+{% endblock %}
