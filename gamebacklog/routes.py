@@ -20,3 +20,13 @@ def add_genre():
         db.session.commit()
         return redirect(url_for("genres"))
     return render_template("add_genre.html")
+
+
+@app.route("/edit_genre/<int:genre_id>", methods=["GET", "POST"])
+def edit_genre(genre_id):
+    genre = Genre.query.get_or_404(genre_id)
+    if request.method == "POST":
+        genre.genre_name = request.form.get("genre_name")
+        db.session.commit()
+        return redirect(url_for("genres"))
+    return render_template("edit_genre.html", genre=genre)
