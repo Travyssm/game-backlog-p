@@ -8,4 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
     M.Modal.init(modals, {
         opacity: 0.5
     });
+
+    // datepicker initialisation
+    let datepicker = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(datepicker, {
+        format: "dd mmmm, yyyy",
+        i18n: {done: "Select"}
+    });
+
+    // select initialisation
+    let selects = document.querySelectorAll('select');
+    M.FormSelect.init(selects);
 });

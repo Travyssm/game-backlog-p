@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="light-blue-text text-darken-4 center-align">Add Game</h3>
+
+<div class="row card-panel pink accent-2">
+    <form class="col s12" method="POST" action="{{ url_for('add_game') }}">
+        <!-- game_name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <input id="game_name" name="game_name" minlength="2" maxlength="50" type="text" class="validate" required>
+                <label for="game_name">Game Name</label>
+            </div>
+        </div>
+        <!-- game_description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                <textarea id="game_description" name="game_description" minlength="5" maxlength="200" 
+                    type="text" class=" materialize-textarea validate" required></textarea>
+                <label for="game_description">Game Description</label>
+            </div>
+        </div>
+        <!-- release_date -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
+                <input id="release_date" name="release_date" type="text" class="datepicker validate" required>
+                <label for="release_date">Release Date</label>
+            </div>
+        </div>
+        <!-- is_favourite -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fa-solid fa-star light-blue-text text-darken-4"></i>
+                <label for="is_favourite">
+                    <input id="is_favourite" name="is_favourite" type="checkbox">
+                    <span class="lever"></span>
+                    Is Favourite
+                </label>
+            </div>
+        </div>
+        <!-- genre_id -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <select name="genre_id" id="genre_id" class="validate" required>
+                    <option value="" disabled selected>Choose Genre</option>
+                    {% for genre in genres %}
+                        <option value="{{ genre.id }}">{{ genre.genre_name }}</option>
+                    {% endfor %}
+                </select>
+                <label for="genre_id">Genre Id</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Add Game <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

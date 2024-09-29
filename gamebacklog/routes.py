@@ -38,3 +38,20 @@ def delete_genre(genre_id):
     db.session.delete(genre)
     db.session.commit()
     return redirect(url_for("genres"))
+
+
+@app.route("/add_game", methods=["GET", "POST"])
+def add_game():
+    genres = list(Genre.query.order_by(Genre.genre_name).all())
+    if request.method == "POST":
+        game = Game(
+        game_name=request.form.get("game_name"),
+        game_description=request.form.get("game_description"),
+        is_favourite=bool(True if request.form.get("is_favourite") else False),
+        release_date=request.form.get("release_date"),
+        genre_id=request.form.get("genre_id")
+        )
+        db.session.add(game)
+        db.session.commit()
+        return redirect(url_for("home"))
+    return render_template("add_game.html", genres=genres)
