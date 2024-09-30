@@ -4,9 +4,12 @@ from gamebacklog.models import Genre, Game
 
 @app.route("/")
 def home():
+    return render_template("index.html")
+
+@app.route("/games")
+def games():
     games = list(Game.query.order_by(Game.id).all())
     return render_template("games.html", games=games)
-
 
 @app.route("/genres")
 def genres():
@@ -75,4 +78,4 @@ def delete_game(game_id):
     game = Game.query.get_or_404(game_id)
     db.session.delete(game)
     db.session.commit()
-    return redirect(url_for("home"))
+    return redirect(url_for("games"))
