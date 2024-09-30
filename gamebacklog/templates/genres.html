@@ -26,7 +26,7 @@
           <div id="modal-{{ genre.id }}" class="modal">
             <div class="modal-content">
               <h4>Are you sure you want to delete the {{ genre.genre_name }} genre?</h4>
-              <p class="red-text">WARNING! This action cannot be undone.</p>
+              <p class="red-text"><strong>WARNING!</strong> This will delete all related games! Action cannot be undone.</p>
             </div>
             <div class="modal-footer">
               <a href="{{ url_for('delete_genre', genre_id=genre.id) }}" class="btn red">Delete</a>

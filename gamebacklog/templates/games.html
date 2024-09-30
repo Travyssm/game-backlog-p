@@ -26,8 +26,18 @@
             <p>{{ game.game_description }}</p>
             <p>
                 <a href="{{ url_for('edit_game', game_id=game.id) }}" class="btn green accent-4">Edit</a>
-
+                <a href="#modal-{{ game.id }}" class="btn red modal-trigger">Delete</a>
             </p>
+
+            <div id="modal-{{ game.id }}" class="modal">
+                <div class="modal-content">
+                  <h4>Are you sure you want to delete the game <strong> {{ game.game_name }} </strong> ?</h4>
+                  <p class="red-text">WARNING! This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                  <a href="{{ url_for('delete_game', game_id=game.id) }}" class="btn red">Delete</a>
+                  <a href="#!" class="modal-close btn green accent-4">Cancel</a>
+                </div>
         </div>
     </li>
     {% endfor %}

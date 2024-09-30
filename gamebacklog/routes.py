@@ -69,3 +69,10 @@ def edit_game(game_id):
         game.genre_id = request.form.get("genre_id")
         db.session.commit()
     return render_template("edit_game.html", game=game, genres=genres)
+
+@app.route("/delete_game/<int:game_id>")
+def delete_game(game_id):
+    game = Game.query.get_or_404(game_id)
+    db.session.delete(game)
+    db.session.commit()
+    return redirect(url_for("home"))
