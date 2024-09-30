@@ -24,6 +24,10 @@
         <div class="collapsible-body">
             <strong> {{ game.genre }}</strong>
             <p>{{ game.game_description }}</p>
+            <p>
+                <a href="{{ url_for('edit_game', game_id=game.id) }}" class="btn green accent-4">Edit</a>
+
+            </p>
         </div>
     </li>
     {% endfor %}

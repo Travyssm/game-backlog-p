@@ -56,3 +56,16 @@ def add_game():
         db.session.commit()
         return redirect(url_for("home"))
     return render_template("add_game.html", genres=genres)
+
+@app.route("/edit_game/<int:game_id>", methods=["GET", "POST"])
+def edit_game(game_id):
+    game = Game.query.get_or_404(game_id)
+    genres = list(Genre.query.order_by(Genre.genre_name).all())
+    if request.method == "POST":
+        game.game_name = request.form.get("game_name")
+        game.game_description = request.form.get("game_description")
+        game.is_favourite = bool(True if request.form.get("is_favourite") else False)
+        game.release_date = request.form.get("release_date")
+        game.genre_id = request.form.get("genre_id")
+        db.session.commit()
+    return render_template("edit_game.html", game=game, genres=genres)
