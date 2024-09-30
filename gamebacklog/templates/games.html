@@ -11,4 +11,21 @@
     </div>
 </div>
 
+<ul class="collapsible">
+    {% for game in games|sort(attribute="release_date") %}
+    <li>
+        <div class="collapsible-header black-text pink accent-4">
+            <i class="fas fa-caret-down"></i>
+            <strong>{{ game.game_name }}</strong> : {{ game.release_date.strftime("%d %B, %Y") }}
+            {% if game.is_favourite == True %}
+                <i class="fa-solid fa-star black-text"></i>
+            {% endif %}
+        </div>
+        <div class="collapsible-body">
+            <strong> {{ game.genre }}</strong>
+            <p>{{ game.game_description }}</p>
+        </div>
+    </li>
+    {% endfor %}
+  </ul>
 {% endblock %}

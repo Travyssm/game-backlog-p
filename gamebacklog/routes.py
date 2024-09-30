@@ -4,7 +4,8 @@ from gamebacklog.models import Genre, Game
 
 @app.route("/")
 def home():
-    return render_template("games.html")
+    games = list(Game.query.order_by(Game.id).all())
+    return render_template("games.html", games=games)
 
 
 @app.route("/genres")
