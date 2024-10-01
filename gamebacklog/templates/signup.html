@@ -25,5 +25,8 @@
             <i class="fa-solid fa-xmark"></i>
         </a>
     </form>
+    {% for mesg in get_flashed_messages() %}
+      <p>{{ mesg }}</p>
+    {% endfor %}
 </div>
 {% endblock %}

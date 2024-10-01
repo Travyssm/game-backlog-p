@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session, flash
 from flask_login import login_user, logout_user, current_user, login_required
 from gamebacklog import app, db, bcrypt
 from gamebacklog.models import Genre, Game, User
@@ -16,10 +16,13 @@ def register():
         return render_template("signup.html")
     elif request.method == "POST":
         existing_user = User.query.filter(
-            User.username == request.form.get("username").lower()).all()
+            User.username == request.form.get("username")).all()
 
         if existing_user:
-            return redirect(url_for("register"), error="User already here!")
+            flash(
+                "Username already exists. Please try a different username"
+            )
+            return redirect(url_for("register"))
 
 
         username = request.form.get("username")
@@ -31,12 +34,15 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for("home"))
+    
+    return render_template("signup.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
         return render_template("login.html")
+
     elif request.method == "POST":
         
         username = request.form.get("username")
@@ -44,15 +50,22 @@ def login():
 
         user = User.query.filter_by(username=username).first()
 
+        if user == None:
+                flash("Username doesn't exist. Register?")
+                return render_template("index.html")
+
         if bcrypt.check_password_hash(user.password, password):
             login_user(user)
             return redirect(url_for("home"))
         else:
-            return render_template("login.html")
+            flash("Wrong username/password. Please try again.")
+            return render_template("index.html")
+
 
 @app.route("/logout")
 def logout():
     logout_user()
+    flash("You have been logged out")
     return redirect(url_for("home"))
 
 @app.route("/games")
