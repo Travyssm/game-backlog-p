@@ -76,4 +76,21 @@ Game Backlog is a site to compile a list of games that you have yet to play or w
 
  - From the users dashboard it would be nice if there was an option to only display the favourited games or perhaps games from only a specific genre chosen.
 
+ - Currently there are no messages to show an error when a duplicate of a game or genre is input into the database, as it stands the user is just redirected to the respective page with no changes applied.
+
 ## Testing
+
+- HTML
+    - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/). This was done for every html page created.
+    ![html_check](docs/html_check.png)
+
+- Accessibility
+  - This was checked using the free tool on this [site](https://pagespeed.web.dev/)
+  ![access_mob](docs/access_mob.png)  
+  ![access_desk](docs/access_desk.png)
+
+## Credits
+ * Majority of code was used from the code institute walkthrough project
+ * Materialize CSS was used for the style of the web pages
+ * Font awesome was used to display icons on buttons and forms
+ * User authentication was learnt from the following [Youtube video](https://www.youtube.com/watch?v=t9zA1gvrTvo&t=10s)
