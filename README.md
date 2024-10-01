@@ -2,6 +2,10 @@
 
 Game Backlog is a site to compile a list of games that you have yet to play or want to play again.
 
+## Live Project
+
+[View Game Backlog here.](https://game-backlog-a79ad4905aa8.herokuapp.com/)
+
 ## User Experience 
 
 - ### User Stories
