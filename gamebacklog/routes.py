@@ -82,6 +82,12 @@ def genres():
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
     if request.method == "POST":
+        existing_genre = Genre.query.filter(
+            Genre.genre_name == request.form.get("genre_name")).all()
+        
+        if existing_genre:
+            return redirect(url_for("genres"))
+
         genre = Genre(genre_name=request.form.get("genre_name"))
         db.session.add(genre)
         db.session.commit()
@@ -111,6 +117,12 @@ def delete_genre(genre_id):
 def add_game():
     genres = list(Genre.query.order_by(Genre.genre_name).all())
     if request.method == "POST":
+        existing_game = Game.query.filter(
+            Game.game_name == request.form.get("game_name")).all()
+
+        if existing_game:
+            return redirect(url_for("games"))
+
         game = Game(
         game_name=request.form.get("game_name"),
         game_description=request.form.get("game_description"),
