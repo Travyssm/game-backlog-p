@@ -8,7 +8,7 @@
         <!-- game_name -->
         <div class="row">
             <div class="input-field col s12 black-text">
-                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-pencil-alt prefix"></i>
                 <input id="game_name" name="game_name" minlength="2" maxlength="50" type="text" class="validate" required>
                 <label for="game_name">Game Name</label>
             </div>
@@ -16,7 +16,7 @@
         <!-- game_description -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-align-left prefix black-text"></i>
                 <textarea id="game_description" name="game_description" minlength="5" maxlength="500SS" 
                     type="text" class=" materialize-textarea validate" required></textarea>
                 <label for="game_description">Game Description</label>
@@ -25,7 +25,7 @@
         <!-- release_date -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-calendar-alt prefix black-text"></i>
                 <input id="release_date" name="release_date" type="text" class="datepicker validate" required>
                 <label for="release_date">Release Date</label>
             </div>
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="switch">
-                    <i class="fa-solid fa-star light-blue-text text-darken-4"></i>
+                    <i class="fa-solid fa-star black-text"></i>
                     <label for="is_favourite">
                         <input id="is_favourite" name="is_favourite" type="checkbox">
                         <span class="lever"></span>
@@ -46,7 +46,7 @@
         <!-- genre_id -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-folder-open prefix black-text"></i>
                 <select name="genre_id" id="genre_id" class="validate" required>
                     <option value="" disabled selected>Choose Genre</option>
                     {% for genre in genres %}
