@@ -3,11 +3,11 @@
 
 <h3 class="light-blue-text text-darken-4 center-align">Add Game</h3>
 
-<div class="row card-panel pink accent-2">
+<div class="row card-panel pink darken-2 black-text">
     <form class="col s12" method="POST" action="{{ url_for('add_game') }}">
         <!-- game_name -->
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 black-text">
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
                 <input id="game_name" name="game_name" minlength="2" maxlength="50" type="text" class="validate" required>
                 <label for="game_name">Game Name</label>

@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
@@ -20,6 +20,11 @@ from gamebacklog.models import User
 @login_manager.user_loader
 def load_user(uid):
     return User.query.get(uid)
+
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    flash("Login required to visit dashboard!")
+    return redirect(url_for("home"))
 
 bcrypt = Bcrypt(app)
 

@@ -10,6 +10,7 @@ def home():
     else:
         return render_template("index.html")
 
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "GET":
@@ -122,6 +123,7 @@ def add_game():
         return redirect(url_for("home"))
     return render_template("add_game.html", genres=genres)
 
+
 @app.route("/edit_game/<int:game_id>", methods=["GET", "POST"])
 def edit_game(game_id):
     game = Game.query.get_or_404(game_id)
@@ -141,3 +143,9 @@ def delete_game(game_id):
     db.session.delete(game)
     db.session.commit()
     return redirect(url_for("games"))
+
+@app.route("/dashboard")
+@login_required
+def dashboard():
+    return render_template("dashboard.html")
+
