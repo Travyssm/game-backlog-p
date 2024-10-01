@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="container">
-    <h1>Welcome, {{username}}!</h1>
+    <h1>Welcome, {{ current_user.username }}!</h1>
     <p>Welcome to your Dashboard</p>
-    <a href="" class="waves-effect waves-light btn">Logout</a>
+    <a href="{{ url_for('logout') }}" class="waves-effect waves-light btn">Logout</a>
 </div>
 
 

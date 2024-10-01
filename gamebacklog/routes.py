@@ -1,10 +1,59 @@
-from flask import render_template, request, redirect, url_for
-from gamebacklog import app, db
-from gamebacklog.models import Genre, Game
+from flask import render_template, request, redirect, url_for, session
+from flask_login import login_user, logout_user, current_user, login_required
+from gamebacklog import app, db, bcrypt
+from gamebacklog.models import Genre, Game, User
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    if current_user.is_authenticated:
+        return render_template("dashboard.html")
+    else:
+        return render_template("index.html")
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "GET":
+        return render_template("signup.html")
+    elif request.method == "POST":
+        existing_user = User.query.filter(
+            User.username == request.form.get("username").lower()).all()
+
+        if existing_user:
+            return redirect(url_for("register"), error="User already here!")
+
+
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        pw_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+        user = User(username=username, password=pw_hash)
+
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for("home"))
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "GET":
+        return render_template("login.html")
+    elif request.method == "POST":
+        
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        user = User.query.filter_by(username=username).first()
+
+        if bcrypt.check_password_hash(user.password, password):
+            login_user(user)
+            return redirect(url_for("home"))
+        else:
+            return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
 
 @app.route("/games")
 def games():

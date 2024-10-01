@@ -1,4 +1,6 @@
 from gamebacklog import db
+from flask_login import UserMixin
+from flask_bcrypt import Bcrypt
 
 class Genre(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,6 +19,21 @@ class Game(db.Model):
     genre_id = db.Column(db.Integer, db.ForeignKey("genre.id", ondelete="CASCADE"), nullable=False)
 
     def __repr__(self):
-        return "#{0} - Game: {1} | Release: {2}".format(
+        return "#{0} - Game: {1} | Favourite: {2}".format(
             self.id, self.game_name, self.is_favourite
         )
+
+class User(db.Model, UserMixin):
+    __tablename__ = 'users'
+
+    uid = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(260), nullable=False)
+
+    def __repr__(self):
+        return f'<User: {self.username}>'
+
+    def get_id(self):
+        return self.uid
+
+

@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class="container">
-    <h1>Welcome</h1>
-    <form action="{{ url_for('login') }}" method="POST">
+    <h1>Sign Up</h1>
+    <form action="{{ url_for('register') }}" method="POST">
         <input 
             type="text"
             name="username"
@@ -18,14 +18,12 @@
             class="input-field"
             required
         >
-        <button class="btn waves-effect waves-light" type="submit" name="action">Login
+        <button class="btn waves-effect waves-light" type="submit" name="action">Sign up
             <i class="fa-solid fa-user"></i>
         </button>
+        <a href="{{ url_for('home') }}" class="waves-effect waves-light btn">Cancel
+            <i class="fa-solid fa-xmark"></i>
+        </a>
     </form>
-    <br>
-    <p> Not yet registered</p>
-    <a href="{{ url_for('register')}}" class="waves-effect waves-light btn">Register
-        <i class="fa-solid fa-user-plus"></i>
-    </a>
 </div>
 {% endblock %}
