@@ -83,12 +83,12 @@ def genres():
 def add_genre():
     if request.method == "POST":
         existing_genre = Genre.query.filter(
-            Genre.genre_name == request.form.get("genre_name")).all()
+            Genre.genre_name == request.form.get("genre_name").title()).all()
         
         if existing_genre:
             return redirect(url_for("genres"))
 
-        genre = Genre(genre_name=request.form.get("genre_name"))
+        genre = Genre(genre_name=request.form.get("genre_name").title())
         db.session.add(genre)
         db.session.commit()
         return redirect(url_for("genres"))
@@ -118,13 +118,13 @@ def add_game():
     genres = list(Genre.query.order_by(Genre.genre_name).all())
     if request.method == "POST":
         existing_game = Game.query.filter(
-            Game.game_name == request.form.get("game_name")).all()
+            Game.game_name == request.form.get("game_name").title()).all()
 
         if existing_game:
             return redirect(url_for("games"))
 
         game = Game(
-        game_name=request.form.get("game_name"),
+        game_name=request.form.get("game_name").title(),
         game_description=request.form.get("game_description"),
         is_favourite=bool(True if request.form.get("is_favourite") else False),
         release_date=request.form.get("release_date"),
@@ -132,7 +132,7 @@ def add_game():
         )
         db.session.add(game)
         db.session.commit()
-        return redirect(url_for("home"))
+        return redirect(url_for("games"))
     return render_template("add_game.html", genres=genres)
 
 
@@ -147,6 +147,7 @@ def edit_game(game_id):
         game.release_date = request.form.get("release_date")
         game.genre_id = request.form.get("genre_id")
         db.session.commit()
+        return redirect(url_for("games"))
     return render_template("edit_game.html", game=game, genres=genres)
 
 @app.route("/delete_game/<int:game_id>")
