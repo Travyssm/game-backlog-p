@@ -82,6 +82,8 @@ Game Backlog is a site to compile a list of games that you have yet to play or w
 
  - Currently there are no messages to show an error when a duplicate of a game or genre is input into the database, as it stands the user is just redirected to the respective page with no changes applied.
 
+ - As of now, you have to choose a genre from the existing dropdown menu when adding a game. This means the genre has to be created first before adding a game. It would be better if you could enter a genre while adding a game and then the genre data would be added to the database list.
+
 ## Testing
 
 - HTML
