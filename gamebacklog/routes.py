@@ -161,3 +161,7 @@ def delete_game(game_id):
 def dashboard():
     return render_template("dashboard.html")
 
+
+@app.route("/coming_soon")
+def coming_soon():
+    return render_template("coming_soon.html")
