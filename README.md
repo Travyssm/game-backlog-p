@@ -95,6 +95,9 @@ Game Backlog is a site to compile a list of games that you have yet to play or w
   ![access_mob](docs/access_mob.png)  
   ![access_desk](docs/access_desk.png)
 
+## Known Bugs
+ - When on mobile/tablet the select menu to choose a genre when adding or editing a game does not always set the right value when clicked, however this seems to work fine on desktop.
+
 ## Credits
  * Majority of code was used from the code institute walkthrough project
  * Materialize CSS was used for the style of the web pages
