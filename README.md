@@ -95,6 +95,19 @@ Game Backlog is a site to compile a list of games that you have yet to play or w
   ![access_mob](docs/access_mob.png)  
   ![access_desk](docs/access_desk.png)
 
+### User Stories Testing
+
+  1. As a first time visitor, I want to be able to register for an account.
+      * You can sign up to have your own account using the register button that takes you to the sign up page.
+  2. As a first time visitor, I want to be able to easily navigate the site.
+      * A user can navigate through the sites content easily using the navbar that can be accessed on every page. The logo also redirects to the login page or dashboard if signed in.
+  3. As a returning visitor, I want to be able to log in to my account.
+      * A user can log in to their account and view their dashboard by using the login button once they have signed up for an account.
+  4. As a returning visitor, I want to be able to see what games have been added by other users
+      * The main games tab will show all games that have been submitted by users.
+  5. As a returning visitor, I want to be able to edit and delete games and genres.
+      * The genres and game pages allow users to edit and delete submitted games and genres via the respective buttons. The user is asked whether they want to confirm delete beforehand.
+
 ## Known Bugs
  - When on mobile/tablet the select menu to choose a genre when adding or editing a game does not always set the right value when clicked, however this seems to work fine on desktop.
 
